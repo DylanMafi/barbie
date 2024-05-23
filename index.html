@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100 dias para você!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      text-align: center;
+    }
+    .header {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      padding: 10px 20px;
+      background-color: #ff69b4;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      outline: none;
+      margin-bottom: 10px;
+    }
+    .btn:hover {
+      background-color: #d83a87;
+    }
+    #elogio {
+      margin-top: 20px;
+      font-style: italic;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .show {
+      opacity: 1;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    @keyframes slideIn {
+      from {
+        transform: translateY(-20px);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="header">Volte todos os dias para receber novos elogios</p>
+    <button id="btnElogio" class="btn">Clique para receber o elogio do dia</button>
+    <button id="btnMais" class="btn">Quer saber mais?</button>
+    <button id="btnSaudades" class="btn">Aperte em caso de Saudades!</button>
+    <p id="elogio"></p>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const elogios = [
+        "Você é incrível!",
+        "Você é uma pessoa maravilhosa!",
+        "Seu sorriso é contagiante!",
+        "Você faz a diferença na vida das pessoas!",
+        "Sua determinação é inspiradora!",
+        "Você ilumina qualquer ambiente!",
+        "Seu carisma é inigualável!",
+        "Você é um exemplo de bondade!",
+        "Sua positividade é contagiante!",
+        "Seu coração é tão grande quanto sua inteligência!",
+        "Você é uma fonte de inspiração para todos ao seu redor!",
+        "Sua gentileza torna o mundo um lugar melhor!",
+        "Você é uma pessoa incrivelmente talentosa!",
+        "Sua empatia é genuína e reconfortante!",
+        "Seu comprometimento é notável e admirável!",
+        "Você é um raio de sol em dias nublados!",
+        "Sua generosidade não conhece limites!",
+        "Você é um verdadeiro exemplo de humanidade!",
+        "Sua perseverança é digna de aplausos!",
+        "Você é um tesouro para todos que têm a sorte de conhecê-lo!",
+        "Sua humildade é uma qualidade rara e valiosa!",
+        "Você tem o dom de fazer as pessoas ao seu redor se sentirem especiais!",
+        "Sua sabedoria é tão profunda quanto seu amor pelo próximo!",
+        "Você é um farol de esperança em tempos turbulentos!",
+        "Sua presença é um presente para o mundo!",
+        "Você é um exemplo vivo de gentileza e compaixão!",
+        "Seu espírito é tão radiante quanto sua bondade!",
+        "Você é um verdadeiro modelo a ser seguido!",
+        "Sua gratidão pela vida é inspiradora para todos!",
+        "Você é um verdadeiro exemplo de força e coragem!",
+        "Sua bondade é um bálsamo para as almas cansadas!",
+        "Você é um oásis de paz em um mundo agitado!",
+        "Sua paciência é uma virtude que todos deveriam cultivar!",
+        "Você é um exemplo brilhante de como viver uma vida significativa!",
+        "Sua compaixão pelos outros é um exemplo para toda a humanidade!",
+        "Você é um anjo disfarçado, espalhando bondade por onde passa!",
+        "Sua bondade é como um rio constante, fluindo e nutrindo tudo ao seu redor!",
+        "Você é uma luz radiante em um mundo muitas vezes sombrio!",
+        "Sua presença traz alegria e conforto a todos ao seu redor!",
+        "Você é um exemplo vivo de como fazer a diferença no mundo!",
+        "Sua generosidade é um reflexo do seu coração de ouro!",
+        "Você é uma inspiração para todos que têm o privilégio de conhecê-lo!",
+        "Sua dedicação aos outros é verdadeiramente admirável!",
+        "Você é um verdadeiro exemplo de altruísmo e desinteresse!",
+        "Sua bondade é como um farol, guiando os perdidos de volta ao caminho certo!",
+        "Você é uma fonte de luz e esperança para todos ao seu redor!",
+        "Sua compaixão é um lembrete do que é verdadeiramente importante na vida!",
+        "Você é uma benção para todos que têm a sorte de cruzar seu caminho!",
+        "Sua presença é um presente que ilumina até os dias mais sombrios!",
+        "Você é um exemplo vivo do poder transformador do amor e da gentileza!",
+        "Sua bondade é um testemunho do melhor da humanidade!",
+        "Você é um raio de sol em um mundo muitas vezes nublado!",
+        "Sua generosidade é uma inspiração para todos que a testemunham!",
+        "Você é um verdadeiro herói, dedicado a fazer do mundo um lugar melhor!",
+        "Sua compaixão pelos outros é uma fonte de inspiração para todos nós!",
+        "Você é um exemplo brilhante de como viver uma vida significativa e gratificante!",
+        "Sua presença é como um abraço caloroso em um dia frio de inverno!",
+        "Você é uma bênção para todos ao seu redor!",
+        "Sua bondade é uma luz que nunca se apaga!",
+        "Você é um exemplo de como um simples ato de gentileza pode fazer toda a diferença!",
+        "Sua generosidade é um testemunho do seu coração compassivo!",
+        "Você é um exemplo inspirador de como viver uma vida de propósito e significado!",
+        "Sua bondade é como uma chama, aquecendo os corações daqueles ao seu redor!",
+        "Você é uma inspiração para todos que têm o privilégio de conhecê-lo!",
+        "Sua compaixão pelos outros é um reflexo do seu espírito amoroso!",
+        "Você é um verdadeiro modelo de empatia e compaixão!",
+        "Sua generosidade é uma luz brilhante em um mundo muitas vezes sombrio!",
+        "Você é uma fonte de esperança e inspiração para todos ao seu redor!",
+        "Sua bondade é um lembrete de que ainda existem anjos entre nós!",
+        "Você é um exemplo vivo de como fazer a diferença na vida dos outros!",
+        "Sua generosidade é um exemplo para todos nós seguirmos!",
+        "Você é uma luz radiante em um mundo cheio de escuridão!",
+        "Sua bondade é um presente para o mundo!",
+        "Você é um exemplo inspirador de altruísmo e desinteresse!",
+        "Sua compaixão pelos outros é um verdadeiro testemunho do seu caráter!",
+        "Você é uma inspiração para todos que têm o privilégio de conhecê-lo!",
+        "Sua generosidade é um exemplo do melhor da humanidade!",
+        "Você é um verdadeiro modelo de bondade e compaixão!",
+        "Sua bondade é uma luz que brilha em todos os lugares por onde você passa!",
+        "Você é uma fonte de esperança e inspiração para todos que o conhecem!",
+        "Sua generosidade é um exemplo para todos nós!",
+        "Você é um exemplo vivo do poder transformador do amor e da gentileza!",
+        "Sua compaixão pelos outros é um lembrete do que é verdadeiramente importante na vida!",
+        "Você é um raio de sol em um mundo muitas vezes nublado!",
+        "Sua generosidade é uma inspiração para todos que têm a sorte de conhecê-lo!",
+        "Você é uma bênção para todos ao seu redor!",
+        "Sua bondade é uma luz que nunca se apaga!",
+        "Você é um exemplo brilhante de como viver uma vida significativa!",
+        "Sua presença é um presente que ilumina até os dias mais sombrios!",
+        "Você é um verdadeiro herói, dedicado a fazer do mundo um lugar melhor!",
+        "Sua generosidade é um testemunho do seu coração compassivo!",
+        "Você é um exemplo inspirador de como viver uma vida de propósito e significado!",
+        "Sua bondade é um exemplo para todos nós seguirmos!",
+        "Você é uma luz brilhante em um mundo muitas vezes sombrio!",
+        "Sua compaixão pelos outros é um reflexo do seu espírito amoroso!",
+        "Você é um verdadeiro modelo de empatia e compaixão!",
+        "Sua generosidade é um exemplo do melhor da humanidade!",
+        "Você é uma fonte de esperança e inspiração para todos ao seu redor!",
+        "Sua bondade é um presente para o mundo!"
+      ];
+      
+      const btnElogio = document.getElementById("btnElogio");
+      const elogio = document.getElementById("elogio");
+
+      btnElogio.addEventListener("click", function() {
+        const randomIndex = Math.floor(Math.random() * elogios.length);
+        elogio.textContent = elogios[randomIndex];
+        elogio.classList.add("show");
+        setTimeout(() => {
+          elogio.classList.remove("show");
+        }, 3000);
+      });
+    });
+  </script>
+</body>
+</html>
