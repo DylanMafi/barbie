@@ -15,13 +15,16 @@
       align-items: center;
       height: 100vh;
     }
+
     .container {
       text-align: center;
     }
+
     .header {
       font-size: 20px;
       margin-bottom: 20px;
     }
+
     .btn {
       padding: 10px 20px;
       background-color: #ff69b4;
@@ -34,18 +37,22 @@
       outline: none;
       margin-bottom: 10px;
     }
+
     .btn:hover {
       background-color: #d83a87;
     }
+
     #elogio {
       margin-top: 20px;
       font-style: italic;
       opacity: 0;
       transition: opacity 0.5s ease;
     }
+
     .show {
       opacity: 1;
     }
+
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -54,6 +61,7 @@
         opacity: 1;
       }
     }
+
     @keyframes slideIn {
       from {
         transform: translateY(-20px);
@@ -75,7 +83,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const elogios = [
-        "Você é incrível!",
+      "Você é incrível!",
         "Você é uma pessoa maravilhosa!",
         "Seu sorriso é contagiante!",
         "Você faz a diferença na vida das pessoas!",
@@ -162,30 +170,302 @@
         "Sua generosidade é uma inspiração para todos que têm a sorte de conhecê-lo!",
         "Você é uma bênção para todos ao seu redor!",
         "Sua bondade é uma luz que nunca se apaga!",
-        "Você é um exemplo brilhante de como viver uma vida significativa!",
-        "Sua presença é um presente que ilumina até os dias mais sombrios!",
-        "Você é um verdadeiro herói, dedicado a fazer do mundo um lugar melhor!",
+        "Você é um exemplo brilhante de como viver uma vida significativa e gratificante!",
+        "Sua presença é como um abraço caloroso em um dia frio de inverno!",
+        "Você é uma bênção para todos ao seu redor!",
+        "Sua bondade é uma luz que nunca se apaga!",
+        "Você é um exemplo de como um simples ato de gentileza pode fazer toda a diferença!",
         "Sua generosidade é um testemunho do seu coração compassivo!",
         "Você é um exemplo inspirador de como viver uma vida de propósito e significado!",
-        "Sua bondade é um exemplo para todos nós seguirmos!",
-        "Você é uma luz brilhante em um mundo muitas vezes sombrio!",
+        "Sua bondade é como uma chama, aquecendo os corações daqueles ao seu redor!",
+        "Você é uma inspiração para todos que têm o privilégio de conhecê-lo!",
         "Sua compaixão pelos outros é um reflexo do seu espírito amoroso!",
         "Você é um verdadeiro modelo de empatia e compaixão!",
-        "Sua generosidade é um exemplo do melhor da humanidade!",
-        "Você é uma fonte de esperança e inspiração para todos ao seu redor!",
-        "Sua bondade é um presente para o mundo!"
+        "Sua generosidade é uma luz brilhante em um mundo muitas vezes sombrio!",
+        "Você é uma fonte de esperança e inspiração para todos ao seu redor!"
+        // Adicione mais elogios aqui
       ];
-      
-      const btnElogio = document.getElementById("btnElogio");
-      const elogio = document.getElementById("elogio");
 
-      btnElogio.addEventListener("click", function() {
-        const randomIndex = Math.floor(Math.random() * elogios.length);
-        elogio.textContent = elogios[randomIndex];
-        elogio.classList.add("show");
-        setTimeout(() => {
-          elogio.classList.remove("show");
-        }, 3000);
+      const mensagensMais = [
+      "Quero passar o resto da minha vida ao seu lado!",
+"Você é a luz que ilumina os meus dias!",
+"O seu amor transforma o meu mundo!",
+"Cada momento ao seu lado é um presente!",
+"Você é a minha inspiração!",
+"Você é a razão do meu sorriso todos os dias!",
+"Meu coração bate mais forte por você a cada segundo!",
+"Seu amor é como uma brisa suave em um dia quente de verão!",
+"Você é o meu porto seguro em meio às tempestades da vida!",
+"Minha vida ganhou um novo significado desde que te conheci!",
+"Seu abraço é o melhor lugar do mundo!",
+"Você é a música que embala os meus sonhos!",
+"Sua presença é um presente que eu valorizo todos os dias!",
+"Nossas memórias juntos são tesouros que guardarei para sempre!",
+"Você é o amor da minha vida e sempre será!",
+"Com você, cada dia é uma nova aventura cheia de amor e felicidade!",
+"O seu sorriso é a minha fonte de felicidade!",
+"Você é o meu anjo na terra!",
+"O seu amor é o combustível que alimenta a minha alma!",
+"Você é o meu sonho tornado realidade!",
+"Minha gratidão por você é infinita!",
+"Seu amor é o presente mais precioso que já recebi!",
+"Você é a estrela que guia os meus passos na escuridão!",
+"Com você, eu descobri o verdadeiro significado da felicidade!",
+"Você é o meu parceiro perfeito nesta jornada da vida!",
+"Sua bondade e compreensão são um bálsamo para a minha alma!",
+"O seu amor é a luz que dissipa todas as minhas preocupações!",
+"Você é o meu raio de sol em dias chuvosos!",
+"Seu amor me dá forças para superar todos os desafios!",
+"Você é a personificação da beleza e da graça!",
+"Meu coração transborda de amor por você a cada instante!",
+"Você é a resposta para todas as minhas preces!",
+"Com você, eu me sinto completo!",
+"Você é o amor da minha vida e o meu melhor amigo!",
+"Seu amor é a âncora que me mantém firme em meio às tempestades!",
+"Você é o meu conto de fadas que se tornou realidade!",
+"Minha admiração por você não tem limites!",
+"Você é o melhor presente que já recebi na vida!",
+"Com você, eu descobri o verdadeiro significado da felicidade!",
+"Você é o meu refúgio seguro em um mundo cheio de incertezas!",
+"Você é a pessoa mais incrível que já conheci!",
+"Seu amor é a fonte da minha inspiração!",
+"Você é a estrela mais brilhante no céu da minha vida!",
+"Com você, eu descobri o verdadeiro significado da palavra amor!",
+"Você é o meu herói silencioso que sempre está lá para mim!",
+"Seu amor é o meu maior tesouro nesta vida!",
+"Você é o meu farol em meio à escuridão!",
+"Com você, eu me sinto invencível!",
+"Você é o meu raio de esperança nos momentos mais sombrios!",
+"Seu amor é o presente mais precioso que já recebi!",
+"Você é a peça que faltava no quebra-cabeça da minha vida!",
+"Você é o meu parceiro de alma nesta jornada da vida!",
+"Seu amor é a música que embala os meus sonhos!",
+"Você é o meu maior motivo para sorrir todos os dias!",
+"Você é o meu abraço apertado nos momentos de fraqueza!",
+"Seu amor é a luz que guia os meus passos na escuridão!",
+"Você é o meu anjo da guarda que sempre me protege!",
+"Com você, eu me sinto completo e realizado!",
+"Você é o meu mundo e tudo o que eu sempre quis!",
+"Seu amor é o que torna a minha vida verdadeiramente especial!",
+"Você é a minha rocha, sempre firme e constante!",
+"Com você, eu descobri o verdadeiro significado da palavra felicidade!",
+"Você é o meu refúgio em meio ao caos do mundo!",
+"Seu amor é o combustível que alimenta os meus sonhos!",
+"Você é o meu equilíbrio em um mundo cheio de incertezas!",
+"Com você, eu sinto que posso conquistar o impossível!",
+"Você é a minha âncora em um mar agitado!",
+"Seu amor é o que me dá forças para seguir em frente!",
+"Você é a minha inspiração para ser uma pessoa melhor todos os dias!",
+"Com você, eu descobri o verdadeiro significado do amor incondicional!",
+"Você é a minha razão para acreditar em dias melhores!",
+"Seu amor é o que torna cada dia da minha vida mais especial!",
+"Você é o meu amuleto da sorte em todas as situações!",
+"Com você, eu me sinto verdadeiramente vivo!",
+"Você é a minha fonte de alegria e felicidade!",
+"Seu amor é o que me dá coragem para enfrentar qualquer desafio!",
+"Você é o meu lar, onde quer que eu esteja!",
+"Com você, eu me sinto completo e em paz!",
+"Você é o meu destino, minha jornada e meu final feliz!",
+"Seu amor é o que ilumina o caminho da minha vida!",
+"Você é a minha bússola, sempre me guiando na direção certa!",
+"Com você, eu sei que sempre terei um motivo para sorrir!",
+"Você é a minha fortaleza, sempre me protegendo de todo mal!",
+"Seu amor é o que faz o meu coração bater mais forte a cada dia!",
+"Você é a minha luz no fim do túnel em momentos de escuridão!",
+"Com você, eu sei que sempre terei um ombro amigo para chorar!",
+"Você é o meu sol em um dia nublado!",
+"Seu amor é o que me dá esperança em meio às adversidades!",
+"Você é o meu confidente, sempre ouvindo e compreendendo!",
+"Com você, eu sei que sempre terei um motivo para agradecer!",
+"Você é o meu raio de esperança em meio à tempestade!",
+"Seu amor é o que me dá forças para continuar lutando!",
+"Você é o meu tesouro mais precioso nesta vida!",
+"Com você, eu me sinto verdadeiramente abençoado!",
+"Você é o meu farol, sempre me guiando de volta para casa!",
+"Seu amor é o que torna tudo possível!",
+"Você é o meu presente mais valioso de todos!",
+"Com você, eu sei que sempre terei um lar para voltar!",
+"Você é o meu anjo da guarda, sempre me protegendo de todo mal!",
+"Seu amor é o que me dá coragem para enfrentar o desconhecido!",
+"Você é o meu sonho que se tornou realidade!",
+"Com você, eu sei que sempre terei alguém para amar e ser amado!",
+"Você é o meu eterno companheiro nesta jornada chamada vida!",
+"Seu amor é o que me mantém firme e forte em meio às adversidades!",
+"Você é a minha estrela guia em meio à escuridão!",
+"Com você, eu sei que sempre terei um motivo para seguir em frente!",
+"Você é o meu amor verdadeiro, minha alma gêmea, meu tudo!",
+
+
+        // Adicione mais mensagens aqui
+      ];
+
+      const mensagensSaudades = [
+      "Eu sempre estou pensando em você! Sinta-se abraçada por mim!",
+"Saudades de cada momento que passamos juntos!",
+"Quando estamos longe, meu coração fica apertado de saudades!",
+"Você é o meu porto seguro, mesmo estando longe!",
+"Mal posso esperar para te ver de novo!",
+"Saudades do seu sorriso que ilumina meu dia!",
+"Cada segundo longe de você parece uma eternidade!",
+"O vazio em meu peito só pode ser preenchido pela sua presença!",
+"Saudades dos nossos abraços calorosos e acolhedores!",
+"Você é o meu refúgio, mesmo a milhares de quilômetros de distância!",
+"As lembranças dos nossos momentos juntos aquecem meu coração!",
+"Meu mundo fica incompleto quando você não está por perto!",
+"Quando estou longe de você, sinto falta da sua presença reconfortante!",
+"A distância só aumenta o amor que sinto por você!",
+"Saudades das conversas que só nós entendemos!",
+"Seu cheiro ainda está presente em minhas memórias!",
+"Não há distância que possa diminuir o amor que sinto por você!",
+"Cada instante longe de você é uma tortura para mim!",
+"Mal posso esperar para perder-me em seu olhar novamente!",
+"O som da sua voz é a música que embala meus sonhos!",
+"Saudades do toque suave da sua mão na minha!",
+"Você é a luz que ilumina os dias mais sombrios da minha ausência!",
+"Saudades das risadas compartilhadas e dos momentos de alegria!",
+"Meu coração anseia por sua companhia a cada segundo que passa!",
+"A saudade é a prova do amor intenso que sinto por você!",
+"Cada lembrança nossa é um tesouro que guardo com carinho!",
+"Você é o meu lar, e a saudade é apenas um lembrete disso!",
+"A distância só fortalece o vínculo que temos um com o outro!",
+"Mal posso esperar para sentir o calor do seu abraço novamente!",
+"As lembranças dos nossos momentos juntos são meu tesouro mais precioso!",
+"Seu sorriso é a luz que guia meu caminho de volta para você!",
+"Saudades dos nossos planos e sonhos compartilhados!",
+"Você é a peça que falta no quebra-cabeça da minha felicidade!",
+"Cada minuto sem você é uma eternidade de saudade!",
+"Seu amor é o que me dá forças para suportar a distância!",
+"A saudade é apenas uma prova de que nosso amor é verdadeiro!",
+"Saudades dos seus beijos que me fazem sentir completo!",
+"Você é a estrela que brilha em minha escuridão de saudade!",
+"Cada segundo ao seu lado é um presente que valorizo muito!",
+"A distância só torna nosso reencontro ainda mais especial!",
+"Mal posso esperar para ouvir seu riso novamente!",
+"Saudades dos nossos passeios de mãos dadas!",
+"Você é o meu conforto em meio à tempestade da saudade!",
+"Cada lembrança nossa é uma promessa de reencontro!",
+"Seu amor é o que me mantém firme durante a ausência!",
+"A saudade é o tempero que torna nosso amor ainda mais doce!",
+"Saudades dos nossos momentos de cumplicidade!",
+"Você é o sol que ilumina os dias sombrios da minha ausência!",
+"Cada dia longe de você é um dia menos para o nosso reencontro!",
+"Mal posso esperar para me perder em seus braços novamente!",
+"Saudades do brilho dos seus olhos quando me olha!",
+"Você é o meu norte em meio à solidão da saudade!",
+"Cada lembrança nossa é um raio de sol em meu coração!",
+"A distância é apenas uma prova de nossa conexão inquebrável!",
+"Saudades do som da sua risada que alegra minha alma!",
+"Você é o meu abrigo seguro em meio ao furacão da saudade!",
+"Cada dia sem você é um desafio que enfrento com amor!",
+"Mal posso esperar para perder-me em seus braços novamente!",
+"Saudades dos nossos momentos de pura felicidade!",
+"Você é o meu farol, sempre me guiando de volta para casa!",
+"Cada batida do meu coração é um eco do seu nome!",
+"A distância só aumenta minha certeza de que você é meu destino!",
+"Saudades do calor do seu corpo junto ao meu!",
+"Você é a razão pela qual minha saudade tem tanto significado!",
+"Cada lembrança nossa é um motivo para sorrir em meio à saudade!",
+"Mal posso esperar para compartilhar mais momentos ao seu lado!",
+"Saudades da sensação de paz que você me traz!",
+"Você é meu refúgio em meio ao caos da saudade!",
+"Cada minuto sem você é um segundo perdido de felicidade!",
+"A distância só fortalece meu desejo de estar ao seu lado!",
+"Saudades dos nossos planos e sonhos para o futuro!",
+"Você é minha âncora em meio ao mar revolto da saudade!",
+"Cada segundo longe de você é uma eternidade de dor!",
+"Mal posso esperar para ver o brilho dos seus olhos novamente!",
+"Saudades do som da sua voz que acalma meu coração!",
+"Você é o motivo pelo qual minha saudade é tão intensa!",
+"Cada lembrança nossa é um pedacinho do paraíso em meio à saudade!",
+"A distância é apenas uma prova de que nosso amor é eterno!",
+"Saudades dos momentos em que éramos um só!",
+"Você é o fogo que aquece meu coração cheio de saudade!",
+"Cada dia sem você é uma batalha que travo com amor e esperança!",
+"Mal posso esperar para sentir o toque suave da sua pele novamente!",
+"Saudades das nossas conversas profundas e significativas!",
+"Você é o meu refúgio seguro em meio ao deserto da saudade!",
+"Cada lembrança nossa é um raio de sol em minha jornada solitária!",
+"A distância só torna nosso amor ainda mais forte e verdadeiro!",
+"Saudades dos nossos momentos de pura harmonia!",
+"Você é meu anjo da guarda em meio ao caos da saudade!",
+"Cada segundo longe de você é uma prova de amor que enfrento com coragem!",
+"Mal posso esperar para perder-me em seu olhar novamente!",
+"Saudades do calor do seu amor que aquece minha alma!",
+"Você é o meu oásis em meio ao deserto árido da saudade!",
+"Cada lembrança nossa é uma promessa de que nosso amor durará para sempre!",
+"A distância é apenas um obstáculo que ultrapassaremos juntos!",
+"Saudades dos nossos momentos de puro êxtase!",
+"Você é a luz no fim do túnel da minha saudade!",
+"Cada minuto sem você é uma eternidade de solidão!",
+"Mal posso esperar para sentir seu cheiro novamente!",
+"Saudades do conforto do seu abraço que me faz sentir completo!",
+"Você é o meu porto seguro em meio à tempestade da saudade!",
+"Cada lembrança nossa é uma pérola preciosa em meu coração!",
+"A distância só fortalece nosso amor e nossa conexão!",
+"Saudades dos nossos momentos de total entrega!",
+"Você é minha inspiração para suportar a dor da saudade!",
+"Cada segundo longe de você é uma prova do nosso amor inabalável!",
+"Mal posso esperar para me perder em seus lábios novamente!",
+"Saudades do sentimento de paz que você me traz!",
+"Você é minha fortaleza em meio à fragilidade da saudade!",
+"Cada lembrança nossa é um lembrete de que nosso amor é eterno!",
+"A distância só aumenta minha certeza de que você é minha alma gêmea!",
+
+
+        // Adicione mais mensagens aqui
+      ];
+
+      // Obtenha o dia do ano para garantir uma seleção diferente a cada dia
+      const today = new Date();
+      const dayOfYear = today.getFullYear() * 1000 + today.getDate();
+
+      // Use o dia do ano como índice para escolher os elogios e mensagens do dia
+      const elogioIndex = dayOfYear % elogios.length;
+      const mensagemMaisIndex = dayOfYear % mensagensMais.length;
+      const mensagemSaudadesIndex = dayOfYear % mensagensSaudades.length;
+
+      const btnElogio = document.getElementById('btnElogio');
+      const btnMais = document.getElementById('btnMais');
+      const btnSaudades = document.getElementById('btnSaudades');
+      const elogioText = document.getElementById('elogio');
+
+      btnElogio.addEventListener('click', function() {
+        elogioText.textContent = elogios[elogioIndex];
+        elogioText.classList.add('show');
+        elogioText.style.animation = 'fadeIn 0.5s ease forwards';
+        btnElogio.style.animation = 'slideIn 0.5s ease forwards';
+
+        setTimeout(function() {
+          elogioText.classList.remove('show');
+          elogioText.style.animation = '';
+          btnElogio.style.animation = '';
+        }, 30000); // Mostra o elogio por 30 segundos
+      });
+
+      btnMais.addEventListener('click', function() {
+        elogioText.textContent = mensagensMais[mensagemMaisIndex];
+        elogioText.classList.add('show');
+        elogioText.style.animation = 'fadeIn 0.5s ease forwards';
+        btnMais.style.animation = 'slideIn 0.5s ease forwards';
+
+        setTimeout(function() {
+          elogioText.classList.remove('show');
+          elogioText.style.animation = '';
+          btnMais.style.animation = '';
+        }, 30000); // Mostra a mensagem por 30 segundos
+      });
+
+      btnSaudades.addEventListener('click', function() {
+        elogioText.textContent = mensagensSaudades[mensagemSaudadesIndex];
+        elogioText.classList.add('show');
+        elogioText.style.animation = 'fadeIn 0.5s ease forwards';
+        btnSaudades.style.animation = 'slideIn 0.5s ease forwards';
+
+        setTimeout(function() {
+          elogioText.classList.remove('show');
+          elogioText.style.animation = '';
+          btnSaudades.style.animation = '';
+        }, 30000); // Mostra a mensagem por 30 segundos
       });
     });
   </script>
